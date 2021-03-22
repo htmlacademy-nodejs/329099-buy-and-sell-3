@@ -7,7 +7,10 @@ const {
   shuffle,
 } = require(`../../utils`);
 
-const DEFAULT_COUNT = 1;
+const Count = {
+  DEFAULT: 1,
+  MAX: 1000,
+}
 const FILE_NAME = `mocks.json`;
 
 const TITLES = [
@@ -74,12 +77,12 @@ module.exports = {
   run(args) {
     const [count] = args;
 
-    if (count > 1000) {
-      console.error(`Не больше 1000 объявлений.`);
+    if (count > Count.MAX) {
+      console.error(`Не больше ${Count.MAX} объявлений.`);
       process.exit(ExitCode.success);
     }
 
-    const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
+    const countOffer = Number.parseInt(count, 10) || Count.DEFAULT;
     const content = JSON.stringify(generateOffers(countOffer));
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
