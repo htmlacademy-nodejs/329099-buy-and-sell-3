@@ -79,7 +79,7 @@ module.exports = {
 
     if (count > Count.MAX) {
       console.error(`Не больше ${Count.MAX} объявлений.`);
-      process.exit(ExitCode.success);
+      process.exit(ExitCode.SUCCESS);
     }
 
     const countOffer = Number.parseInt(count, 10) || Count.DEFAULT;
@@ -87,11 +87,11 @@ module.exports = {
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
         console.error(`Can't write data to file...`);
-        process.exit(ExitCode.error);
+        process.exit(ExitCode.ERROR);
       }
 
       console.info(`Operation success. File created.`);
-      process.exit(ExitCode.success);
+      process.exit(ExitCode.SUCCESS);
     });
   }
 };
