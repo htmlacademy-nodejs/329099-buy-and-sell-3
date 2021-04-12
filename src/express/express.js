@@ -20,13 +20,6 @@ app.set(`views`, path.resolve(__dirname, TEMPLATE_DIR));
 app.set(`view engine`, `pug`);
 app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
 
-// Это какой-то лютый костыль либо я делаю что-то не так.
-// app.use(`/login`, express.static(path.resolve(__dirname, PUBLIC_DIR)));
-// app.use(`/my`, express.static(path.resolve(__dirname, PUBLIC_DIR)));
-// app.use(`/offers`, express.static(path.resolve(__dirname, PUBLIC_DIR)));
-// app.use(`/register`, express.static(path.resolve(__dirname, PUBLIC_DIR)));
-// app.use(`/search`, express.static(path.resolve(__dirname, PUBLIC_DIR)));
-
 app.use(`/`, mainRouter);
 app.use(`/login`, loginRouter);
 app.use(`/my`, myRouter);
