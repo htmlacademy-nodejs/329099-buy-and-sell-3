@@ -1,13 +1,14 @@
 extends layout.pug
 
 block content
+  include components/header.pug
   main.page-content
     section.ticket
       .ticket__wrapper
         h1.visually-hidden Карточка объявления
         .ticket__content
           .ticket__img
-            img(src='img/ticket.jpg' srcset='img/ticket@2x.jpg 2x' alt='Изображение товара')
+            img(src='/img/ticket.jpg' srcset='/img/ticket@2x.jpg 2x' alt='Изображение товара')
           .ticket__info
             h2.ticket__title Мое старое кресло
             .ticket__header
@@ -31,12 +32,12 @@ block content
               li
                 a.category-tile.category-tile--small(href='#')
                   span.category-tile__image
-                    img(src='img/cat.jpg' srcset='img/cat@2x.jpg 2x' alt='Иконка категории')
+                    img(src='/img/cat.jpg' srcset='/img/cat@2x.jpg 2x' alt='Иконка категории')
                   span.category-tile__label Дом
               li
                 a.category-tile.category-tile--small(href='#')
                   span.category-tile__image
-                    img(src='img/cat04.jpg' srcset='img/cat04@2x.jpg 2x' alt='Иконка категории')
+                    img(src='/img/cat04.jpg' srcset='/img/cat04@2x.jpg 2x' alt='Иконка категории')
                   span.category-tile__label Спорт и отдых
         .ticket__comments
           h2.ticket__subtitle Коментарии
@@ -44,7 +45,7 @@ block content
             form.form.comment-form(action='#' method='post')
               .comment-form__header
                 a.comment-form__avatar.avatar(href='#')
-                  img(src='img/avatar.jpg' srcset='img/avatar@2x.jpg 2x' alt='Аватар пользователя')
+                  img(src='/img/avatar.jpg' srcset='/img/avatar@2x.jpg 2x' alt='Аватар пользователя')
                 p.comment-form__author Вам слово
               .comment-form__field
                 .form__field
@@ -58,7 +59,7 @@ block content
                 .comment-card
                   .comment-card__header
                     a.comment-card__avatar.avatar(href='#')
-                      img(src='img/avatar02.jpg' srcset='img/avatar02@2x.jpg 2x' alt='Аватар пользователя')
+                      img(src='/img/avatar02.jpg' srcset='/img/avatar02@2x.jpg 2x' alt='Аватар пользователя')
                     p.comment-card__author Георгий Шпиц
                   .comment-card__content
                     p Что это за рухлядь? Стыдно такое даже фотографировать, не то, что продавать.
@@ -66,10 +67,11 @@ block content
                 .comment-card
                   .comment-card__header
                     a.comment-card__avatar.avatar(href='#')
-                      img(src='img/avatar03.jpg' srcset='img/avatar03@2x.jpg 2x' alt='Аватар пользователя')
+                      img(src='/img/avatar03.jpg' srcset='/img/avatar03@2x.jpg 2x' alt='Аватар пользователя')
                     p.comment-card__author Александр Бурый
                   .comment-card__content
                     p
                       | А можете доставить мне домой? Готов доплатить 300 сверху.
                       br
                       | Живу в центре прямо рядом с Моховой улицей. Готов купить прямо сейчас. Мой телефон 9032594748
+  include components/footer.pug

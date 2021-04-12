@@ -1,6 +1,7 @@
 extends layout.pug
 
 block content
+  include components/header.pug
   main.page-content
     section.sign-up
       form.sign-up__form.form(action='#' method='post' enctype='multipart/form-data' autocomplete='off')
@@ -31,3 +32,4 @@ block content
           label(for='user-password-again') Пароль еще раз
           span Обязательное поле
         button.sign-up__button.btn.btn--medium.js-button(type='submit' disabled) Создать аккаунт
+  include components/footer.pug

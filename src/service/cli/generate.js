@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
 const fs = require(`fs`).promises;
 const path = require(`path`);
-const chalk = require('chalk');
+const chalk = require(`chalk`);
 const {ExitCode} = require(`../../constants`);
 const {
   getRandomInt,
@@ -38,7 +38,7 @@ const getData = async (fileName) => {
     const file = await fs.readFile(filePath);
     return file.toString().split(`\n`).slice(0, -1);
   } catch (error) {
-    console.error(`Can't open file...\n${error}`)
+    return console.error(`Can't open file...\n${error}`);
   }
 };
 
@@ -56,7 +56,7 @@ const generateOffers = async (count) => {
     title: titles[getRandomInt(0, titles.length - 1)],
     type: OfferType[Object.keys(OfferType)[Math.floor(Math.random() * Object.keys(OfferType).length)]],
     sum: getRandomInt(SumRestrict.MIN, SumRestrict.MAX),
-  }))
+  }));
 };
 
 module.exports = {

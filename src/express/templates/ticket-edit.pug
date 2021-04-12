@@ -1,6 +1,7 @@
 extends layout.pug
 
 block content
+  include components/header.pug
   main.page-content
     section.ticket-form
       .ticket-form__wrapper
@@ -9,7 +10,7 @@ block content
           form.ticket-form__form.form(action='#' method='post' enctype='multipart/form-data' autocomplete='off')
             .ticket-form__avatar-container.js-preview-container.uploaded
               .ticket-form__avatar.js-preview
-                img(src='img/item02.jpg' srcset='img/item02@2x.jpg 2x' alt)
+                img(src='/img/item02.jpg' srcset='/img/item02@2x.jpg 2x' alt)
               .ticket-form__field-avatar
                 input#avatar.visually-hidden.js-file-field(type='file' name='avatar')
                 label(for='avatar')
@@ -45,3 +46,4 @@ block content
                     input#sell-field.visually-hidden(type='radio' name='action' value='sell')
                     label.switch__button(for='sell-field') Продам
             button.form__button.btn.btn--medium.js-button(type='submit') Сохранить
+  include components/footer.pug

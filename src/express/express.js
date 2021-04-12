@@ -1,4 +1,4 @@
-`use strict`;
+'use strict';
 
 const express = require(`express`);
 const chalk = require(`chalk`);
@@ -33,5 +33,8 @@ app.use(`/my`, myRouter);
 app.use(`/offers`, offersRouter);
 app.use(`/register`, registerRouter);
 app.use(`/search`, searchRouter);
+
+app.use((req, res, next) => res.render(`404`));
+app.use((err, req, res, next) => res.render(`500`));
 
 app.listen(DEFAULT_PORT, () => console.info(chalk.green(`Сервер запущен на порту: ${DEFAULT_PORT}`)));
