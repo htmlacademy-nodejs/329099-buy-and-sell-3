@@ -1,5 +1,9 @@
 'use strict';
 
+const path = require(`path`);
+const fs = require(`fs`).promises;
+const { DATA_DIR } = require(`./constants`);
+
 module.exports.getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -13,4 +17,14 @@ module.exports.shuffle = (someArray) => {
   }
 
   return someArray;
+};
+
+module.exports.getData = async (fileName) => {
+  try {
+    const filePath = path.join(process.cwd(), DATA_DIR, fileName);
+    const file = await fs.readFile(filePath);
+    return file.toString().split(`\n`).slice(0, -1);
+  } catch (error) {
+    return console.error(`Can't open file...\n${error}`);
+  }
 };
