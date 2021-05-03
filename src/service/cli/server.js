@@ -2,8 +2,7 @@
 
 const chalk = require(`chalk`);
 const express = require(`express`);
-const { nanoid } = require(`nanoid`);
-const fsP = require(`fs`).promises;
+const {nanoid} = require(`nanoid`);
 const fs = require(`fs`);
 const {
   HttpCode,
@@ -13,7 +12,7 @@ const {
   ID_LENGTH,
   OfferValidation,
 } = require(`../../constants`);
-const { getData } = require(`../../utils`);
+const {getData} = require(`../../utils`);
 
 
 const fileContent = fs.readFileSync(FILE_NAME, `utf-8`);
@@ -24,7 +23,11 @@ app.use(express.json());
 
 app.get(`/search`, (req, res) => {
   const result = mocks.find(({title}) => title.includes(req.query.query));
-  result ? res.json(result) : res.send(`Не найдено ни одной публикации`);
+  if (result) {
+    res.json(result);
+  } else {
+    res.send(`Не найдено ни одной публикации`);
+  }
 });
 
 app.get(`/offers`, (req, res) => {
@@ -33,12 +36,20 @@ app.get(`/offers`, (req, res) => {
 
 app.get(`/offers/:offerId`, (req, res) => {
   const offer = mocks.find(({id}) => id === req.params.offerId);
-  offer ? res.json(offer) : res.json([]);
+  if (offer) {
+    res.json(offer);
+  } else {
+    res.json([]);
+  }
 });
 
 app.get(`/offers/:offerId/comments`, (req, res) => {
   const offer = mocks.find(({id}) => id === req.params.offerId);
-  offer ? res.json(offer.comments) : res.json([]);
+  if (offer) {
+    res.json(offer.comments);
+  } else {
+    res.json([]);
+  }
 });
 
 app.post(`/offers`, (req, res) => {
@@ -50,8 +61,8 @@ app.post(`/offers`, (req, res) => {
     || !(offerData.title && (offerData.title.length >= OfferValidation.Title.MIN && offerData.title.length <= OfferValidation.Title.MAX))
     || !(offerData.type && offerData.type.length)
     || !(Number.parseInt(offerData.sum, 10) >= OfferValidation.Price.MIN)
-    ) {
-      res.sendStatus(HttpCode.BAD_REQUEST);
+  ) {
+    res.sendStatus(HttpCode.BAD_REQUEST);
   } else {
     console.log(offerData);
     mocks = [...mocks, {
@@ -62,7 +73,7 @@ app.post(`/offers`, (req, res) => {
       title: offerData.title,
       type: offerData.type,
       sum: Number.parseInt(offerData.sum, 10),
-    }]
+    }];
     res.sendStatus(HttpCode.CREATED);
   }
 });

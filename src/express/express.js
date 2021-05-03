@@ -9,7 +9,7 @@ const myRouter = require(`./routes/my`);
 const offersRouter = require(`./routes/offers`);
 const registerRouter = require(`./routes/register`);
 const searchRouter = require(`./routes/search`);
-const { DefaultPort } = require(`../constants`);
+const {DefaultPort} = require(`../constants`);
 
 const PUBLIC_DIR = `public`;
 const TEMPLATE_DIR = `templates`;
@@ -27,7 +27,7 @@ app.use(`/offers`, offersRouter);
 app.use(`/register`, registerRouter);
 app.use(`/search`, searchRouter);
 
-app.use((req, res, next) => res.render(`404`));
-app.use((err, req, res, next) => res.render(`500`));
+app.use((req, res, _next) => res.render(`404`));
+app.use((err, req, res, _next) => res.render(`500`));
 
 app.listen(DefaultPort.EXPRESS, () => console.info(chalk.green(`Сервер запущен на порту: ${DefaultPort.EXPRESS}`)));

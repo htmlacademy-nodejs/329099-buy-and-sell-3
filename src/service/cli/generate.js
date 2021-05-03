@@ -2,7 +2,7 @@
 
 const fs = require(`fs`).promises;
 const chalk = require(`chalk`);
-const { nanoid } = require(`nanoid`);
+const {nanoid} = require(`nanoid`);
 const {
   ExitCode,
   FILE_NAME,

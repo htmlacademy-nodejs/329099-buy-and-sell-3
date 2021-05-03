@@ -2,7 +2,7 @@
 
 const path = require(`path`);
 const fs = require(`fs`).promises;
-const { DATA_DIR } = require(`./constants`);
+const {DATA_DIR} = require(`./constants`);
 
 module.exports.getRandomInt = (min, max) => {
   min = Math.ceil(min);
